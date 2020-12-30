@@ -1,0 +1,29 @@
+.login-form, .signup-form {
+    width: 340px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+.login-form form, .signup-form form {
+    border-radius: 3px;
+    padding: 30px;
+}
+.form-control {
+    height: 40px;
+    box-shadow: none;
+    border-radius: 2px;
+    font-size: 15px;
+}
+.btn {
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight:bold;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.signup-form a, .login-form a {
+    text-decoration: underline;
+}
+.signup-form a:hover, .login-form a:hover {
+    text-decoration: none;
+}
