@@ -1,24 +1,15 @@
 package com.ersinyildiz.carsalessystem.controller;
 
-import com.ersinyildiz.carsalessystem.model.Advert;
-import com.ersinyildiz.carsalessystem.model.Owner;
-import com.ersinyildiz.carsalessystem.model.User;
-import com.ersinyildiz.carsalessystem.service.CarService;
+import com.ersinyildiz.carsalessystem.model.*;
 import com.ersinyildiz.carsalessystem.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 public class OwnerController {
@@ -59,6 +50,7 @@ public class OwnerController {
     public String addOwnerPage(){
         return "/dashboard/owner/add";
     }
+
     @ModelAttribute("createOwner")
     public Owner initModel(){
         return new Owner();
@@ -71,6 +63,7 @@ public class OwnerController {
             mav.setViewName("/dashboard/owner/add");
             return mav;
         }
+        System.out.println("Eklenecek owner adresi : "+owner.getAddress().toString());
         ownerService.save(owner);
         List<Owner> ownerList = ownerService.findAll();
         mav.addObject("successfullyAddedOwner","<b>"+owner.getFirstName()+" "+owner.getLastName()+

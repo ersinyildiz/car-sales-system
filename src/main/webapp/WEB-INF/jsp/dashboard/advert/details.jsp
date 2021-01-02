@@ -8,6 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.css" rel="stylesheet"/>
     <!-- Our Custom CSS -->
     <link href="/css/custom.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome JS -->
@@ -83,11 +84,121 @@
         </nav>
         <div class="container">
             <hr class="hr-text" data-content="İlan Detayları">
+            <!--Section: Block Content-->
+            <section class="mb-5">
 
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div id="mdb-lightbox-ui"></div>
+
+                        <div class="mdb-lightbox">
+
+                            <div class="row product-gallery mx-1">
+
+                                <div class="col-12 mb-0">
+                                    <figure class="view overlay rounded z-depth-1 main-img">
+                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                                           data-size="710x823">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                                                 class="img-fluid z-depth-1">
+                                        </a>
+                                    </figure>
+                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                                           data-size="710x823">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                                                 class="img-fluid z-depth-1">
+                                        </a>
+                                    </figure>
+                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
+                                           data-size="710x823">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
+                                                 class="img-fluid z-depth-1">
+                                        </a>
+                                    </figure>
+                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
+                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
+                                           data-size="710x823">
+                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
+                                                 class="img-fluid z-depth-1">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="view overlay rounded z-depth-1 gallery-item">
+                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                                                     class="img-fluid">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="view overlay rounded z-depth-1 gallery-item">
+                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
+                                                     class="img-fluid">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="view overlay rounded z-depth-1 gallery-item">
+                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
+                                                     class="img-fluid">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="view overlay rounded z-depth-1 gallery-item">
+                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                                                     class="img-fluid">
+                                                <div class="mask rgba-white-slight"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <h5>Fantasy T-shirt</h5>
+                        <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
+                            error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
+                            officia quis dolore quos sapiente tempore alias.</p>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-borderless mb-0">
+                                <tbody>
+                                <tr>
+                                    <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+                                    <td>Shirt 5407X</td>
+                                </tr>
+                                <tr>
+                                    <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+                                    <td>Black</td>
+                                </tr>
+                                <tr>
+                                    <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
+                                    <td>USA, Europe</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+            </section>
+            <!--Section: Block Content-->
         </div>
 
     </div>
 </div>
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <!-- Popper.JS -->
@@ -98,7 +209,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
+        // MDB Lightbox Init
+        $(function () {
+            $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+        });
 
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"

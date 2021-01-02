@@ -108,6 +108,7 @@
                             <th>Adı</th>
                             <th>Soyadı</th>
                             <th>Telefon No</th>
+                            <th>Adres</th>
                             <th>İşlemler</th>
                         </tr>
                         </thead>
@@ -117,6 +118,7 @@
                                 <td><c:out value="${owner.firstName}"/></td>
                                 <td><c:out value="${owner.lastName}"/></td>
                                 <td><c:out value="${owner.phoneNumber}"/></td>
+                                <td><c:out value="${owner.address.county.name}/${owner.address.city.name}"/></td>
                                 <td>
                                     <a href="/owner/details/${owner.id}" class="btn btn-info">İncele</a>
                                 </td>

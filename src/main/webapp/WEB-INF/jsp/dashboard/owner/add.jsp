@@ -84,7 +84,7 @@
         <div class="container">
             <hr class="hr-text" data-content="İlan Sahibi Ekle">
             <%--@elvariable id="createOwner" type=""--%>
-            <div class="wrapper justify-content-center">
+            <div class="wrapper">
                 <form:form action="/owner/add" method="post" modelAttribute="createOwner">
                     <div class="form-group">
                         <form:input path="firstName" class="text-dark form-control" placeholder="Adı.." required="required"/>
@@ -96,9 +96,18 @@
                         <form:input path="phoneNumber" class="text-dark form-control" placeholder="Telefon No.." required="required"/>
                     </div>
                     <div class="form-group">
+                        <form:select path="address.city" id="selectCity" class="text-dark form-control">
+                            <option value="0">İl Seçiniz</option>
+                        </form:select>
+                    </div>
+                    <div class="form-group">
+                        <form:select path="address.county" id="selectCounty" disabled="true" cssClass="text-dark form-control">
+                            <option value="0">İlçe Seçiniz</option>
+                        </form:select>
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
                     </div>
-
                 </form:form>
             </div>
         </div>
@@ -106,7 +115,7 @@
     </div>
 </div>
 <!-- jQuery CDN - Slim version (=without AJAX) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Popper.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
@@ -115,19 +124,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        const Url = 'http://localhost:8080/cities';
+        $.getJSON(Url, function (response){
+            $.each(response, function (key, value) {
+                $('#selectCity').append("<option value='"+value.id+"'>"+value.name+"</option>");
+            });
+        });
+        $('#selectCity').on('change',function (){
+            var city_id = $(this).val();
+            if(city_id == 0){
+                $('#selectCounty').attr("disabled",true).html("<option value='0'>İlçe Seçiniz</option>");
+            }
+            else{
+                const Url = 'http://localhost:8080/counties';
+                $.getJSON(Url, function (response){
+                    $('#selectCounty').attr("disabled",false).html("<option value='0'>İlçe Seçiniz</option>");
+                    $.each(response, function (key, value) {
+                        if (city_id == value.city.id){
+                            $('#selectCounty').append("<option value='"+value.id+"'>"+value.name+"</option>");
+                        }
+                    });
+                });
+            }
 
-
+        });
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });
-
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar, #content').toggleClass('active');
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
-
-
     });
 </script>
 </body>

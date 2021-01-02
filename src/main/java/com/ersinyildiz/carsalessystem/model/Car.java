@@ -21,17 +21,10 @@ public class Car {
     private int km;
     @Column(name = "Color")
     private String color;
+
     @JoinColumn
     @ManyToOne
     private Owner owner;
-
-    public Advert getAdvert() {
-        return advert;
-    }
-
-    public void setAdvert(Advert advert) {
-        this.advert = advert;
-    }
 
     @OneToOne(mappedBy = "car")
     @JoinColumn
@@ -103,5 +96,13 @@ public class Car {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    public Advert getAdvert() {
+        return advert;
+    }
+
+    public void setAdvert(Advert advert) {
+        this.advert = advert;
     }
 }

@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-2">
                                 <span class="card-text"><i class="fa fa-map-marker-alt mr-1"></i> <span
-                                        class="font-weight-bold">Adres bilgisi:</span> - </span>
+                                        class="font-weight-bold">Adres bilgisi:</span> ${owner.address.county.name}/${owner.address.city.name} </span>
                                 </div>
                             </div>
                         </div>

@@ -3,10 +3,12 @@ package com.ersinyildiz.carsalessystem.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "owner")
+@Entity(name = "owners")
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_sequence")
@@ -22,6 +24,9 @@ public class Owner {
     @JsonIgnore
     @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
     private Set<Car> cars = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
     public Owner() {
     }
@@ -71,6 +76,14 @@ public class Owner {
 
     public void setCars(Set<Car> cars) {
         this.cars = cars;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
