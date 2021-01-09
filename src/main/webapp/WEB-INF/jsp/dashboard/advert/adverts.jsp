@@ -95,25 +95,24 @@
                         <table class="table table-bordered">
                             <thead class="table-secondary">
                             <tr>
+                                <th>Fotoğraf</th>
                                 <th>Marka</th>
                                 <th>Model</th>
                                 <th>İlan Başlığı</th>
-                                <th>Yayınlandığı Tarih</th>
                                 <th>Fiyat</th>
-                                <th>İlan Sahibi</th>
+                                <th>Konum</th>
                                 <th>Detay</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${advertList}" var="advert">
-                                <tr>
-                                    <td><c:out value="${advert.car.getBrand()}"/></td>
-                                    <td><c:out value="${advert.car.getModel()}"/></td>
-                                    <td><c:out value="${advert.title}"/></td>
-                                    <td><c:out value="${advert.createdAt}"/></td>
-                                    <td><c:out value="${advert.price} TL"/></td>
-                                    <td><c:out value="${advert.car.owner.getFirstName()} ${advert.car.owner.getLastName()}"/></td>
-                                    <td>
+                                    <td><img width="100" height="80" src="data:image/jpg;base64,${advert.getCar().getPhotoSet().stream().findFirst().get().getBase64Data()}" /></td>
+                                    <td class="align-middle"><c:out value="${advert.car.getBrand()}"/></td>
+                                    <td class="align-middle"><c:out value="${advert.car.getModel()}"/></td>
+                                    <td class="align-middle"><c:out value="${advert.title}"/></td>
+                                    <td class="align-middle"><c:out value="${advert.price} TL"/></td>
+                                    <td class="align-middle"><c:out value="${advert.car.owner.address.county.getName()}/${advert.car.owner.address.city.getName()}"/></td>
+                                    <td class="align-middle">
                                         <a href="/advert/details/${advert.id}" class="btn btn-info">İncele</a>
                                     </td>
                                 </tr>

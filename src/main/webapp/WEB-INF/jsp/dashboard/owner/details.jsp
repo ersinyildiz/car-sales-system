@@ -130,43 +130,39 @@
                         </c:if>
                         <div class="row">
                             <c:forEach items="${owner.cars}" var="car">
-                                <div class="col-lg-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${car.advert.title}
-                                                <a href="/advert/details/${car.advert.id}" class="btn btn-secondary btn-sm ml-2 float-right">İncele</a></h5>
-                                            <hr/>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <span> <b>Marka:</b> ${car.brand}</span>
-                                                </div>
-                                                <div class="col-sm-3 col-sm-9">
-                                                    <span> <b>Model:</b> ${car.model} </span>
-                                                </div>
-
-                                                <div class="col-sm-3 col-sm-9">
-                                                    <span> <b>Km:</b> ${car.km} </span>
-                                                </div>
-
-                                                <div class="col-sm-3 col-sm-9">
-                                                    <span> <b>Yıl:</b> ${car.year}</span>
+                                <c:if test="${car.getPhotoSet().isEmpty() ne true}">
+                                    <div class="col-lg-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${car.advert.title}</h5>
+                                                <hr/>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <span> <b>Marka:</b> ${car.brand}</span><br/>
+                                                        <span> <b>Model:</b> ${car.model} </span><br/>
+                                                        <span> <b>Km:</b> ${car.km} </span><br/>
+                                                        <span> <b>Yıl:</b> ${car.year}</span><br/>
+                                                        <span> <b>Renk:</b> ${car.color}</span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <img width="200" height="120" src="data:image/jpg;base64,${car.getPhotoSet().stream().findFirst().get().getBase64Data()}" alt="First slide"/>
+                                                    </div>
                                                 </div>
 
-                                                <div class="col-sm-3 col-sm-9">
-                                                    <span> <b>Renk:</b> ${car.color}</span>
+                                                <div class="row mt-2">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <span class="font-weight-bold">Açıklama: </span> ${car.advert.description} </span>
+                                                    </div>
                                                 </div>
+                                                <div class="row mt-4 justify-content-center">
+                                                    <a href="/advert/details/${car.advert.id}" class="btn btn-secondary btn-sm">İncele</a>
+                                                </div>
+
+                                                </p>
                                             </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-lg-12 col-sm-12">
-                                                    <span class="font-weight-bold">Açıklama: </span> ${car.advert.description} </span>
-                                                </div>
-                                            </div>
-
-                                            </p>
                                         </div>
                                     </div>
-                                </div>
+                                </c:if>
                             </c:forEach>
                         </div>
                     </div>

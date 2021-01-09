@@ -83,47 +83,85 @@
         </nav>
         <div class="container">
             <hr class="hr-text" data-content="İlan Ekle">
-            <form>
-
-                <div class="form-signin">
-                    <div class="form-row">
-                        <div class="form-label-group col-6">
-                            <input id="inputName" class="form-control" placeholder="İsim"
-                                        type="text">
-                            <label for="inputName">İsim</label>
+            <%--@elvariable id="saveAdvert" type=""--%>
+            <div class="wrapper row col-xl-12">
+                <form:form action="/advert/add" method="post" modelAttribute="saveAdvert" enctype="multipart/form-data">
+                    <div class="col-xl-6 float-left">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Marka</span>
+                            </div>
+                            <form:input path="car.brand" type="" cssClass="form-control"></form:input>
                         </div>
-                        <div class="form-label-group col-6">
-                            <input id="inputSurname" class="form-control" placeholder="Soyisim"
-                                        type="text">
-                            <label for="inputSurname">Soyisim</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Model</span>
+                            </div>
+                            <form:input path="car.model" cssClass="form-control"></form:input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Yıl</span>
+                            </div>
+                            <form:input path="car.year" min="1900" max="2020" type="number" cssClass="form-control"></form:input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">KM</span>
+                            </div>
+                            <form:input path="car.km" min="0" type="number" cssClass="form-control"></form:input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Renk</span>
+                            </div>
+                            <form:input path="car.color" cssClass="form-control"></form:input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">İlan Sahibi</span>
+                            </div>
+                            <form:select path="car.owner.id" items="${ownerList}" itemLabel="firstName" itemValue="id" cssClass="form-control"></form:select>
                         </div>
                     </div>
-
-                    <div class="form-label-group">
-                        <input id="inputMail" class="form-control" placeholder="E-mail adresiniz"
-                                    title="Lütfen mail adresini doğru formatta giriniz." type="email">
-                        <label for="inputMail">E-mail</label>
-                        <c:if test="${existEmail ne null}">
-                            <span class="form-text text-danger">${existEmail}</span>
-                        </c:if>
+                    <div class="col-xl-6 float-right">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">İlan Başlığı</span>
+                            </div>
+                            <form:input path="title" cssClass="form-control"></form:input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">İlan Açıklaması</span>
+                            </div>
+                            <form:textarea path="description" rows="4" cssClass="form-control"></form:textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Fiyat</span>
+                            </div>
+                            <form:input path="price" type="number" cssClass="form-control"></form:input>
+                            <div class="input-group-append">
+                                <span class="input-group-text">TL</span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Dosya Yükle</span>
+                            </div>
+                            <div class="custom-file">
+                                <input name="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg" type="file" class="custom-file-input" id="inputGroupFile01"/>
+                                <label class="" for="inputGroupFile01">Seç</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
+                        </div>
                     </div>
+                </form:form>
+            </div>
 
-                    <div class="form-label-group">
-                        <input  id="inputPhoneNumber" class="form-control"
-                                    placeholder="Telefon Numaranız" type="tel" pattern="^[0-9]{10,11}$" ></input>
-                        <label for="inputPhoneNumber">Telefon</label>
-                    </div>
-
-                    <div class="form-label-group">
-                        <textarea class="form-control" rows="3"
-                                       placeholder="Mahalle, sokak, cadde , ilçe ve il bilgisi giriniz."></textarea>
-                    </div>
-
-                    <button class="btn btn-lg btn-primary btn-block" name="submit">Ekle</button>
-
-                </div>
-
-            </form>
         </div>
 
     </div>
@@ -138,8 +176,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
-
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
             });

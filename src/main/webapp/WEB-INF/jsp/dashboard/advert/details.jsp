@@ -5,10 +5,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="tr">
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.css" rel="stylesheet"/>
     <!-- Our Custom CSS -->
     <link href="/css/custom.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome JS -->
@@ -84,121 +83,87 @@
         </nav>
         <div class="container">
             <hr class="hr-text" data-content="İlan Detayları">
-            <!--Section: Block Content-->
-            <section class="mb-5">
-
+            <div class="container-fluid mt-5">
+                <h2>${advert.getTitle()}</h2>
                 <div class="row">
-                    <div class="col-md-6">
-
-                        <div id="mdb-lightbox-ui"></div>
-
-                        <div class="mdb-lightbox">
-
-                            <div class="row product-gallery mx-1">
-
-                                <div class="col-12 mb-0">
-                                    <figure class="view overlay rounded z-depth-1 main-img">
-                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                           data-size="710x823">
-                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                                 class="img-fluid z-depth-1">
-                                        </a>
-                                    </figure>
-                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
-                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                           data-size="710x823">
-                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                                 class="img-fluid z-depth-1">
-                                        </a>
-                                    </figure>
-                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
-                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
-                                           data-size="710x823">
-                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
-                                                 class="img-fluid z-depth-1">
-                                        </a>
-                                    </figure>
-                                    <figure class="view overlay rounded z-depth-1" style="visibility: hidden;">
-                                        <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
-                                           data-size="710x823">
-                                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
-                                                 class="img-fluid z-depth-1">
-                                        </a>
-                                    </figure>
+                    <div class="col-md-5 align-items-center justify-content-center d-flex">
+                        <div class="carousel slide" data-ride="carousel" id="carousel-1">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="img-thumbnail w-100 d-block" src="data:image/jpg;base64,${advert.getCar().getPhotoSet().stream().findFirst().get().getBase64Data()}" alt="Slide Image" loading="lazy">
                                 </div>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                                     class="img-fluid">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
-                                                     class="img-fluid">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
-                                                     class="img-fluid">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                                                     class="img-fluid">
-                                                <div class="mask rgba-white-slight"></div>
-                                            </div>
-                                        </div>
+                                <c:forEach items="${advert.getCar().getPhotoSet()}" begin="1" var="advertPhoto">
+                                    <div class="carousel-item">
+                                        <img class="img-thumbnail w-100 d-block" src="data:image/jpg;base64,${advertPhoto.getBase64Data()}" alt="Slide Image">
                                     </div>
+                                </c:forEach>
+                            </div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                                <c:forEach items="${advert.getCar().getPhotoSet()}" begin="1" varStatus="loop">
+                                    <li data-target="#carousel-1" data-slide-to="${loop.index}"></li>
+                                </c:forEach>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-7 mt-3">
+                                <table class="table table-striped table-bordered">
+                                    <tr>
+                                        <td class="font-weight-bold">Marka</td>
+                                        <td>${advert.getCar().getBrand()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">Model</td>
+                                        <td>${advert.getCar().getModel()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">Yıl</td>
+                                        <td>${advert.getCar().getYear()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">Km</td>
+                                        <td>${advert.getCar().getKm()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">Renk</td>
+                                        <td>${advert.getCar().getColor()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-bold">Fiyat</td>
+                                        <td class="text-danger font-weight-bold">${advert.getPrice()} TL</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-5 mt-3 text-right">
+                                <div class="form-group border p-3">
+                                    <h6 class="font-weight-bold d-block">${advert.getCar().getOwner().getFirstName()} ${advert.getCar().getOwner().getLastName()}</h6>
+                                    <div class="d-block"><i class="fa fa-phone text-success"></i><span>&nbsp;&nbsp;${advert.getCar().getOwner().getPhoneNumber()}</span></div>
+                                    <a class="btn btn-sm btn-success d-block mt-1" href="/owner/details/${advert.getCar().getOwner().getId()}">Profiline Git</a>
                                 </div>
                             </div>
-
                         </div>
-
-                    </div>
-                    <div class="col-md-6">
-
-                        <h5>Fantasy T-shirt</h5>
-                        <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-                            error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-                            officia quis dolore quos sapiente tempore alias.</p>
-                        <div class="table-responsive">
-                            <table class="table table-sm table-borderless mb-0">
-                                <tbody>
-                                <tr>
-                                    <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
-                                    <td>Shirt 5407X</td>
-                                </tr>
-                                <tr>
-                                    <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
-                                    <td>Black</td>
-                                </tr>
-                                <tr>
-                                    <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
-                                    <td>USA, Europe</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <hr>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="card border-0 w-100">
+                        <div class="card-header font-weight-bold">
+                            Açıklama
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                ${advert.getDescription()}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </section>
-            <!--Section: Block Content-->
         </div>
 
     </div>
 </div>
-<!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <!-- Popper.JS -->

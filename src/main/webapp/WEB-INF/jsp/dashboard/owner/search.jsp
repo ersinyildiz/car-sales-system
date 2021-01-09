@@ -90,7 +90,7 @@
             </c:if>
             <form class="form-inline" method="get" action="/owner/search">
                 <div class="input-group col-lg-12">
-                    <input type="text" name="firstName" class="form-control mr-2"
+                    <input type="search" name="firstName" class="form-control mr-2"
                            placeholder="Lütfen aranacak kişinin adını giriniz..." >
                     <button type="submit" class="btn btn-primary ">Arama Yap</button>
                 </div>

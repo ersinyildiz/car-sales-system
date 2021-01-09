@@ -84,31 +84,44 @@
         <div class="container">
             <hr class="hr-text" data-content="İlan Sahibi Ekle">
             <%--@elvariable id="createOwner" type=""--%>
-            <div class="wrapper">
-                <form:form action="/owner/add" method="post" modelAttribute="createOwner">
-                    <div class="form-group">
-                        <form:input path="firstName" class="text-dark form-control" placeholder="Adı.." required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <form:input path="lastName" class="text-dark form-control" placeholder="Soyadı.." required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <form:input path="phoneNumber" class="text-dark form-control" placeholder="Telefon No.." required="required"/>
-                    </div>
-                    <div class="form-group">
-                        <form:select path="address.city" id="selectCity" class="text-dark form-control">
-                            <option value="0">İl Seçiniz</option>
-                        </form:select>
-                    </div>
-                    <div class="form-group">
-                        <form:select path="address.county" id="selectCounty" disabled="true" cssClass="text-dark form-control">
-                            <option value="0">İlçe Seçiniz</option>
-                        </form:select>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
-                    </div>
-                </form:form>
+            <div class="wrapper row col-lg-12">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 ml-3">
+                    <form:form action="/owner/add" method="post" modelAttribute="createOwner">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Adı</span>
+                            </div>
+                            <form:input path="firstName" type="text" class="text-dark form-control" required="required"/>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Soyadı</span>
+                            </div>
+                            <form:input path="lastName" type="text" class="text-dark form-control" required="required"/>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Telefon No</span>
+                            </div>
+                            <form:input path="phoneNumber" type="tel" class="text-dark form-control" required="required"/>
+                        </div>
+                        <div class="input-group mb-3">
+                            <form:select path="address.city" id="selectCity" class="text-dark form-control">
+                                <option value="0">İl Seçiniz</option>
+                            </form:select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <form:select path="address.county" id="selectCounty" disabled="true" cssClass="text-dark form-control">
+                                <option value="0">İlçe Seçiniz</option>
+                            </form:select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Kaydet</button>
+                        </div>
+                    </form:form>
+                </div>
+
             </div>
         </div>
 

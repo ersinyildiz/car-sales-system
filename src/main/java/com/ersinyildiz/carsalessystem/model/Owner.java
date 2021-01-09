@@ -11,8 +11,7 @@ import java.util.Set;
 @Entity(name = "owners")
 public class Owner {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "owner_sequence")
-    @SequenceGenerator(sequenceName = "OWNER_SEQUENCE",name = "owner_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "FirstName")

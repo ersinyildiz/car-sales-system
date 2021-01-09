@@ -7,8 +7,7 @@ import javax.persistence.*;
 @Entity
 public class County {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "county_sequence")
-    @SequenceGenerator(sequenceName = "COUNTY_SEQUENCE",name = "county_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "NAME")

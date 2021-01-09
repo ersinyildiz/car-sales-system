@@ -7,8 +7,7 @@ import java.util.Collection;
 @Table(name = "roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "role_sequence")
-    @SequenceGenerator(sequenceName = "ROLE_SEQUENCE",name = "role_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "Name")

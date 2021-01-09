@@ -1,14 +1,16 @@
 package com.ersinyildiz.carsalessystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "car")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "car_sequence")
-    @SequenceGenerator(sequenceName = "CAR_SEQUENCE",name = "car_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "Brand")
@@ -26,21 +28,15 @@ public class Car {
     @ManyToOne
     private Owner owner;
 
-    @OneToOne(mappedBy = "car")
+    @OneToOne(mappedBy = "car",cascade = CascadeType.ALL)
     @JoinColumn
     private Advert advert;
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                ", km=" + km +
-                ", color='" + color + '\'' +
-                '}';
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "car",cascade = CascadeType.ALL)
+    private Set<AdvertPhoto> photoSet = new HashSet<>();
+
+
 
     public Long getId() {
         return id;
@@ -105,4 +101,27 @@ public class Car {
     public void setAdvert(Advert advert) {
         this.advert = advert;
     }
+
+    public Set<AdvertPhoto> getPhotoSet() {
+        return photoSet;
+    }
+
+    public void setPhotoSet(Set<AdvertPhoto> photoSet) {
+        this.photoSet = photoSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", km=" + km +
+                ", color='" + color + '\'' +
+                ", owner=" + owner.getFirstName() +
+                '}';
+    }
+
+
 }

@@ -9,8 +9,7 @@ import java.util.Set;
 @Entity(name = "advert")
 public class Advert {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "advert_sequence")
-    @SequenceGenerator(sequenceName = "ADVERT_SEQUENCE",name = "advert_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
     @Column(name = "TITLE")
@@ -43,8 +42,9 @@ public class Advert {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", creadtedAt=" + createdAt +
-                ", price='" + price + '\'' +
+                ", createdAt=" + createdAt +
+                ", price=" + price +
+                ", car=" + car.toString() +
                 '}';
     }
 
